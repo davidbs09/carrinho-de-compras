@@ -37,9 +37,7 @@ Apesar de já ter uma base sólida em Java, este projeto foi uma ótima oportuni
 
 ## Print do Desafio
 
-> **Anexe aqui o print do desafio proposto na plataforma DIO:**
->
-> ![Print do Desafio](CAMINHO_DO_PRINT_AQUI)
+> ![alt text](image.png)
 
 ## Como Executar
 
