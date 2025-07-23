@@ -4,31 +4,49 @@ public class App {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         CarrinhoDeCompras carrinho = new CarrinhoDeCompras();
+        int opcao;
 
-        // Adicionando itens ao carrinho
-        System.out.println("Informe o nome do Item para adicionar ao carrinho:");
-        String nome = scanner.nextLine();
-        System.out.println("Informe o preço do Item:");
-        Double preco = scanner.nextDouble();
-        System.out.println("Informe a quantidade do Item:");
-        int quantidade = scanner.nextInt();
-        carrinho.adicionarItem(nome, preco, quantidade);
-        
+        do {
+            System.out.println("\nEscolha uma opção:");
+            System.out.println("1 - Adicionar item");
+            System.out.println("2 - Listar itens");
+            System.out.println("3 - Calcular valor total");
+            System.out.println("4 - Remover item");
+            System.out.println("0 - Sair");
+            opcao = scanner.nextInt();
+            scanner.nextLine();
 
-        // Listando itens no carrinho
-        carrinho.listarItens();
+            switch (opcao) {
+                case 1: // Adicionar item
+                    System.out.println("Nome do item:");
+                    String nome = scanner.nextLine();
+                    System.out.println("Preço do item:");
+                    Double preco = scanner.nextDouble();
+                    System.out.println("Quantidade do item:");
+                    int quantidade = scanner.nextInt();
+                    scanner.nextLine();
+                    carrinho.adicionarItem(nome, preco, quantidade);
+                    break;
+                case 2: // Listar itens
+                    carrinho.listarItens();
+                    break;
+                case 3: // Calcular valor total
+                    carrinho.calcularValorTotal();
+                    break;
+                case 4: // Remover item
+                    System.out.println("Nome do item a remover:");
+                    String nomeRemover = scanner.nextLine();
+                    carrinho.removerItem(nomeRemover);
+                    break;
+                case 0: // Sair
+                    System.out.println("Saindo...");
+                    break;
+                default: // Opção inválida
+                    System.out.println("Opção inválida. Tente novamente.");
+            }
+        } while (opcao != 0);
 
-        // Calculando o valor total do carrinho
-        carrinho.calcularValorTotal();
-
-        // Removendo um item do carrinho
-        System.out.println("Informe o nome do Item para remover do carrinho:");
-        scanner.nextLine(); // Consumir a quebra de linha pendente
-        String nomeRemover = scanner.nextLine();
-        carrinho.removerItem(nomeRemover);
         scanner.close();
-
-        // Listando itens novamente após remoção
-        carrinho.listarItens();
+        System.out.println("Sistema encerrado.");
     }
 }
